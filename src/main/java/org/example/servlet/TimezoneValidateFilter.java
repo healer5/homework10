@@ -28,19 +28,6 @@ public class TimezoneValidateFilter implements Filter {
 
         String timezoneParam = httpRequest.getParameter("timezone");
 
-        if (timezoneParam != null && !isValidTimeZone(timezoneParam)) {
-            httpResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            httpResponse.setContentType("text/html; charset=utf-8");
-            httpResponse.getWriter().write("<html>");
-            httpResponse.getWriter().write("<head><title>Invalid Timezone</title></head>");
-            httpResponse.getWriter().write("<body>");
-            httpResponse.getWriter().write("<h1>Invalid timezone</h1>");
-            httpResponse.getWriter().write("</body>");
-            httpResponse.getWriter().write("</html>");
-            httpResponse.getWriter().close();
-            return;
-        }
-
         chain.doFilter(request, response);
     }
 
